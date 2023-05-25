@@ -1,0 +1,16 @@
+services:
+  qdrant:
+    restart: always
+    image: qdrant/qdrant:${SERVICE_QDRANT_IMAGE_VERSION}
+    # ports:
+    #   - 0.0.0.0:${SERVICE_QDRANT_PORT}:8080
+    #   - 0.0.0.0:${SERVICE_QDRANT_PORT}:8081
+    command: /qdrant/qdrant --config-path /qdrant/config/production.yaml
+    volumes:
+      - ${SERVICE_CONFIGS}/config.yaml:/qdrant/config/production.yaml
+      - ${SERVICE_DATA}/storage:/qdrant/storage
+      
+networks:
+  default:
+    external: true
+    name: compose-ingress

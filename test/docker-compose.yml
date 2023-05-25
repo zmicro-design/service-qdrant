@@ -1,0 +1,13 @@
+services:
+  qdrant:
+    restart: always
+    image: whatwewant/qdrant:${SERVICE_QDRANT_IMAGE_VERSION}
+    environment:
+      PORT: $SERVICE_QDRANT_PORT
+      USERNAME: ${SERVICE_QDRANT_USERNAME}
+      PASSWORD: ${SERVICE_QDRANT_PASSWORD}
+      
+networks:
+  default:
+    external: true
+    name: compose-ingress

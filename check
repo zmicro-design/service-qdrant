@@ -1,0 +1,22 @@
+#!/bin/bash
+
+service::config_set() {
+  config::check_or_set $1 $2 $SERVICE_CONFIG "${@:3}"
+}
+
+check() {
+  if [ "$DEBUG" = "true" ]; then
+    log::info "[DEBUG][service]: $SERVICE_CONFIG"
+    cat $SERVICE_CONFIG
+  fi
+
+  if [ ! -f "${SERVICE_CONFIGS}/config.yaml" ]; then
+    cp $SERVICE_DIR/conf/config.yaml.example $SERVICE_CONFIGS/config.yaml
+  fi
+
+  # service::config_set SERVICE_QDRANT_PORT text "Port" 8024
+  # service::config_set SERVICE_QDRANT_USERNAME text "Username"
+  # service::config_set SERVICE_QDRANT_PASSWORD text "Password"
+}
+
+check $@
