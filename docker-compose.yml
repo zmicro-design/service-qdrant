@@ -9,6 +9,8 @@ services:
     volumes:
       - ${SERVICE_CONFIGS}/config.yaml:/qdrant/config/production.yaml
       - ${SERVICE_DATA}/storage:/qdrant/storage
+    mem_limit: 8192m
+    cpus: 4
       
 networks:
   default:
