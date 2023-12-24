@@ -1,7 +1,7 @@
 services:
   qdrant:
     restart: always
-    image: qdrant/qdrant:${SERVICE_QDRANT_IMAGE_VERSION}
+    image: whatwewant/qdrant:${SERVICE_QDRANT_IMAGE_VERSION}
     # ports:
     #   - 0.0.0.0:${SERVICE_QDRANT_PORT}:8080
     #   - 0.0.0.0:${SERVICE_QDRANT_PORT}:8081
